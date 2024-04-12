@@ -62,6 +62,7 @@ async function Login (req,res){
         })
 
     } catch (error) {
+        console.log(error)
         res.status(500).send({msg:"Error al autenticar"})
     }
 }
@@ -81,6 +82,7 @@ async function refreshAccessToken(req,res){
         })
         
     } catch (error) {
+        console.log(error)
         res.status(500).send({msg:"Error del servidor"})
         
     }
