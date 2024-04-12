@@ -1,6 +1,6 @@
 const DB_USER="rafaguzman"
 const DB_PASSWORD="VthMC4E8f8IT33Nq"
-const DB_HOST="cluster0.gvqmluk.mongodb.net/"
+const DB_HOST="cluster0.gvqmluk.mongodb.net"
 const DB_NAME="webproyect"
 
 const IP_SERVER="127.0.0.1"

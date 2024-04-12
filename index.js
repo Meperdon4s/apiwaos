@@ -16,5 +16,5 @@ mongoose.connect(dbURL)
 .catch(err=> console.log(err))
 
 app.listen(PORT, ()=>{
-    console.log(`https://apiwaos.onrender.com/api`)
+    console.log(`http://${IP_SERVER}:${PORT}/api`)
 })
