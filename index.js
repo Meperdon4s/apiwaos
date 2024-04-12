@@ -5,7 +5,9 @@ const {DB_HOST, DB_NAME, DB_PASSWORD, DB_USER, IP_SERVER}= require('./constantes
 const app=require("./app")
 
 
-const dbURL=`mongodb+srv://rafaguzman:VthMC4E8f8IT33Nq@cluster0.gvqmluk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+//const dbURL=`mongodb://${IP_SERVER}:${DB_HOST}/${DB_NAME}`
+const dbURL=`mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
+
 
 const PORT = process.env.PORT || 4000;
 
@@ -14,5 +16,5 @@ mongoose.connect(dbURL)
 .catch(err=> console.log(err))
 
 app.listen(PORT, ()=>{
-    console.log(`http://${IP_SERVER}:${PORT}/api`)
+    console.log(`https://apiwaos.onrender.com/api`)
 })

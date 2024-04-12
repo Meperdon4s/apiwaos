@@ -1,6 +1,8 @@
 const User=require("../models/user")
 const bcrypt= require('bcryptjs')
 
+const jwt= require("../utils/jwt")
+
 async function Registrar(req,res){
     const {nombreusuario, apellidos, email,  password}=req.body
 
@@ -51,7 +53,10 @@ async function Login (req,res){
             }else if(!response.active){
                 res.status(400).send({msg:"Usuario inactivo"})
             }else{
-                res.status(200).send({msg:"Usuario logueado correctamente"})
+                res.status(200).send({
+                access: jwt.createAccessToken(response),
+                refresh: jwt.createRefreshToken(response)
+                })
             }
         })
 
@@ -60,7 +65,29 @@ async function Login (req,res){
     }
 }
 
+async function refreshAccessToken(req,res){
+    const {token}=req.body
+    if(!token) res.status(400).send({msg:"Token requerido"})
+
+    const {usuario_id}= jwt.decoded(token);
+
+    try {
+
+        const response = await User.findOne({_id:usuario_id})
+
+        res.status(200).send({
+            accessToken: jwt.createAccessToken(response)
+        })
+        
+    } catch (error) {
+        res.status(500).send({msg:"Error del servidor"})
+        
+    }
+
+}
+
 module.exports= {
     Registrar,
-    Login
+    Login,
+    refreshAccessToken
 }
