@@ -28,6 +28,7 @@ async function Registrar(req,res){
         })
 
     } catch (error) {
+        console.log(error)
         res.status(500).send({
             msg:"No se guardo la informacion"
         })
