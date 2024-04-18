@@ -5,7 +5,7 @@ const {DB_HOST, DB_NAME, DB_PASSWORD, DB_USER, IP_SERVER}= require('./constantes
 const app=require("./app")
 
 
-//const dbURL=`mongodb://${IP_SERVER}:${DB_HOST}/${DB_NAME}`
+//const dbURL=`mongodb://${IP_SERVER}:27017/${DB_NAME}`
 const dbURL=`mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
 
 
